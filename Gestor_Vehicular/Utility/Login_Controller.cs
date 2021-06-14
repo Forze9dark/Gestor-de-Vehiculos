@@ -67,5 +67,16 @@ namespace Gestor_Vehicular.Utility
                 return query.NAME;
             }
         }
+
+        public static bool users_exists(string username, string email)
+        {
+            using (DatabaseEntities db = new DatabaseEntities())
+            {
+                var query_username = (from p in db.Users where p.USERNAME == username select p).Count();
+                var query_email = (from p in db.Users where p.EMAIL == email select p).Count();
+            }
+
+            return false;
+        }
     }
 }

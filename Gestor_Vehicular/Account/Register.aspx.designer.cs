@@ -15,6 +15,24 @@ namespace Gestor_Vehicular.Account
     {
 
         /// <summary>
+        /// Control msg_error_register_title.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msg_error_register_title;
+
+        /// <summary>
+        /// Control msg_error_register_message.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msg_error_register_message;
+
+        /// <summary>
         /// Control txtRUsername.
         /// </summary>
         /// <remarks>
@@ -24,30 +42,48 @@ namespace Gestor_Vehicular.Account
         protected global::System.Web.UI.WebControls.TextBox txtRUsername;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control txtREmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtREmail;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtRPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtRPassword;
 
         /// <summary>
-        /// Control TextBox3.
+        /// Control txtRPasswordConfirm.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtRPasswordConfirm;
+
+        /// <summary>
+        /// Control btnRegisterNewAccount.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegisterNewAccount;
+
+        /// <summary>
+        /// Control btnAcceptsTerm.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAcceptsTerm;
     }
 }

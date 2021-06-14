@@ -269,6 +269,7 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Encrypted_Controller.cs" />
     <Compile Include="Utility\Login_Controller.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
