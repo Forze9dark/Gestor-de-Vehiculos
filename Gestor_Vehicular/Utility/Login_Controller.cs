@@ -16,6 +16,9 @@ namespace Gestor_Vehicular.Utility
         {
             using (DatabaseEntities db = new DatabaseEntities())
             {
+
+                string Encrypt_Password = Encrypted_Controller.Encriptar(password);
+
                 // Checking for black fields
                 if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
                 {
@@ -23,7 +26,7 @@ namespace Gestor_Vehicular.Utility
                 }
 
                 // Query to database
-                var query = (from u in db.Users where u.EMAIL == email && u.PASSWORD == password select u).Count();
+                var query = (from u in db.Users where u.EMAIL == email && u.PASSWORD == Encrypt_Password select u).Count();
 
                 if (query != 0)
                 {

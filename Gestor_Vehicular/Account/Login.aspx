@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-md-4">
-                
+
                 <%-- Error message for login forms --%>
                 <div class="alert alert-danger alert-dismissible fade show login-alert" style="display:none;" role="alert">
                     <strong><asp:Label runat="server" ID="msg_error_login_title" Text="{msg_error_login_title}"></asp:Label></strong> <asp:Label runat="server" ID="msg_error_login_message" Text="{msg_error_login_message}"></asp:Label>

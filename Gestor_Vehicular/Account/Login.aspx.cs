@@ -16,6 +16,7 @@ namespace Gestor_Vehicular.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 Response.Redirect("~/");
@@ -54,7 +55,7 @@ namespace Gestor_Vehicular.Account
             {
                 msg_error_login_title.Text = "Credentials Error";
                 msg_error_login_message.Text = "The data entered is wrong, or the user is not registered.";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "scripts", "$('.register-alert').show();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scripts", "$('.login-alert').show();", true);
             }
 
 

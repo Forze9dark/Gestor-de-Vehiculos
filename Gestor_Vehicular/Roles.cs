@@ -16,7 +16,5 @@ namespace Gestor_Vehicular
     {
         public int ID { get; set; }
         public string NAME { get; set; }
-    
-        public virtual Users Users { get; set; }
     }
 }

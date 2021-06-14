@@ -51,16 +51,17 @@ namespace Gestor_Vehicular.Account
             {
                 using (DatabaseEntities db = new DatabaseEntities())
                 {
-                    // Intance of Users
-                    Users register_new_users = new Users();
+                    
+                    db.Users.Add(new Users()
+                    {
+                        USERNAME = txtRUsername.Text,
+                        EMAIL = txtREmail.Text,
+                        PASSWORD = Encrypted_Controller.Encriptar(txtRPassword.Text),
+                        ROLES = 1
+                    });
 
-                    register_new_users.USERNAME = txtRUsername.Text;
-                    register_new_users.EMAIL = txtREmail.Text;
-                    register_new_users.PASSWORD = Utility.Encrypted_Controller.Encriptar(txtRPassword.Text);
-
-                    //db.Users.Add(register_new_users);
-                    db.Users.Local.Add(register_new_users);
                     db.SaveChanges();
+
                     // Redirect to login page after add to database
                     Response.Redirect("Login.aspx");
 
