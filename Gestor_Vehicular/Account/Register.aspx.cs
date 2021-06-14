@@ -49,7 +49,22 @@ namespace Gestor_Vehicular.Account
 
             if (if_exists_user == null)
             {
+                using (DatabaseEntities db = new DatabaseEntities())
+                {
+                    // Intance of Users
+                    Users register_new_users = new Users();
 
+                    register_new_users.USERNAME = txtRUsername.Text;
+                    register_new_users.EMAIL = txtREmail.Text;
+                    register_new_users.PASSWORD = Utility.Encrypted_Controller.Encriptar(txtRPassword.Text);
+
+                    //db.Users.Add(register_new_users);
+                    db.Users.Local.Add(register_new_users);
+                    db.SaveChanges();
+                    // Redirect to login page after add to database
+                    Response.Redirect("Login.aspx");
+
+                }
             }
             else
             {
@@ -58,25 +73,6 @@ namespace Gestor_Vehicular.Account
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "scripts", "$('.register-alert').show();", true);
                 return;
             }
-
-            using (DatabaseEntities db = new DatabaseEntities())
-            {
-                
-            }
-
-
-            // Store data in list users type
-            List<Users> get_users = new List<Users>()
-            {
-                new Users()
-                {
-                    USERNAME = txtRUsername.Text,
-                    EMAIL = txtREmail.Text,
-                    PASSWORD = txtRPassword.Text
-                }
-            };
-
-
         }
     }
 }

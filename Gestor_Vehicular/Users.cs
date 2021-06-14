@@ -18,7 +18,7 @@ namespace Gestor_Vehicular
         public string USERNAME { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
-        public int ROLES { get; set; }
+        public Nullable<int> ROLES { get; set; }
     
         public virtual Roles Roles1 { get; set; }
     }

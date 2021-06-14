@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="ID" />
@@ -20,7 +20,7 @@
           <Property Name="USERNAME" Type="varchar(max)" Nullable="false" />
           <Property Name="EMAIL" Type="varchar(max)" Nullable="false" />
           <Property Name="PASSWORD" Type="varchar(max)" Nullable="false" />
-          <Property Name="ROLES" Type="int" Nullable="false" />
+          <Property Name="ROLES" Type="int" />
         </EntityType>
         <Association Name="FK_Users_ToRoles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
@@ -42,8 +42,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -63,7 +62,7 @@
           <Property Name="USERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ROLES" Type="Int32" Nullable="false" />
+          <Property Name="ROLES" Type="Int32" />
           <NavigationProperty Name="Roles1" Relationship="Self.FK_Users_ToRoles" FromRole="Users" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_Users_ToRoles">

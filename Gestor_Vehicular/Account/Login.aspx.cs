@@ -43,7 +43,7 @@ namespace Gestor_Vehicular.Account
                 HttpContext.Current.Session["USERNAME"] = data[0].USERNAME;
                 HttpContext.Current.Session["EMAIL"] = data[0].EMAIL;
                 HttpContext.Current.Session["PASSWORD"] = data[0].PASSWORD;
-                HttpContext.Current.Session["ROLES"] = Login_Controller.get_role_name(data[0].ROLES);
+                HttpContext.Current.Session["ROLES"] = Login_Controller.get_role_name(Convert.ToInt32(data[0].ROLES));
 
 
                 FormsAuthentication.SetAuthCookie(data[0].ID.ToString(), true);
