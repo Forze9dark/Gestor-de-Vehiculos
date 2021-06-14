@@ -68,15 +68,52 @@ namespace Gestor_Vehicular.Utility
             }
         }
 
-        public static bool users_exists(string username, string email)
+        public static string[] users_exists(string username, string email)
         {
+            string[] data;
+
             using (DatabaseEntities db = new DatabaseEntities())
             {
                 var query_username = (from p in db.Users where p.USERNAME == username select p).Count();
                 var query_email = (from p in db.Users where p.EMAIL == email select p).Count();
-            }
 
-            return false;
+                if (query_email == 1 && query_username == 1)
+                {
+                    data = new[]
+                    {
+                        "The username and email already exists on the platform.",
+                        "Error, Username and email exists",
+                        "true"
+                    };
+                    return data;
+                }
+
+                if (query_username == 1)
+                {
+                    data = new[]
+                    {
+                        "The username already exists on the platform.",
+                        "Error, Username exists",
+                        "true"
+                    };
+                    return data;
+                }
+
+                if (query_email == 1)
+                {
+                    data = new[]
+                    {
+                        "The email already exists on the platform.",
+                        "Error, Email exists!",
+                        "true"
+                    };
+                    return data;
+                }
+
+                data = null;
+
+                return data;
+            }
         }
     }
 }

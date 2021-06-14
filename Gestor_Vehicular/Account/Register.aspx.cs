@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Gestor_Vehicular.Utility;
 
 namespace Gestor_Vehicular.Account
 {
@@ -44,8 +45,24 @@ namespace Gestor_Vehicular.Account
                 return;
             }
 
+            string[] if_exists_user = Login_Controller.users_exists(txtRUsername.Text, txtREmail.Text);
 
+            if (if_exists_user == null)
+            {
 
+            }
+            else
+            {
+                msg_error_register_title.Text = if_exists_user[1];
+                msg_error_register_message.Text = if_exists_user[0];
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "scripts", "$('.register-alert').show();", true);
+                return;
+            }
+
+            using (DatabaseEntities db = new DatabaseEntities())
+            {
+                
+            }
 
 
             // Store data in list users type
