@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h3 class="display-4 mb-4"><%: HttpContext.Current.Session["USERNAME"] %> Profile.</h3>
+    <hr />
+    <br />
     
     <div class="container">
         <div class="row">
@@ -27,36 +29,62 @@
                 <div class="container">
                     <div class="row">
                         <div class="col col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <div>
+                                <h6><i class="fas fa-user"></i> User Information </h6>
+                                <hr />
+
+                                <label for="exampleInputEmail1">Username</label>
+                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                    </div>
+                                    <input type="text" class="form-control is-invalid" id="validationServer01" value="<%: HttpContext.Current.Session["USERNAME"] %>" disabled>
+                                    <div class="invalid-feedback">
+                                    The username if verifique and cant change!
+                                  </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            
+                            <div>
+                                <label for="exampleInputEmail1">Email</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                                    </div>
+                                    <input type="email" class="form-control" value="<%: HttpContext.Current.Session["EMAIL"] %>" id="inlineFormInputGroup" placeholder="Email" required>
+                                </div>
                             </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            
+                            <br />
+
+                            <h6><i class="fas fa-key"></i> Change Password </h6>
+                            <hr />
+                            <div>
+                                <label for="exampleInputEmail1">Current Password</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                    </div>
+                                    <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Current Password">
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            
+                            <div>
+                                <label for="exampleInputEmail1">New Password</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                    </div>
+                                    <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="New Password">
+                                </div>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-outline-primary"><i class="fas fa-save"></i> Actualizar perfil</button>
                         </div>
 
                         <div class="col col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
