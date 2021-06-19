@@ -12,6 +12,7 @@ namespace Gestor_Vehicular
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
         }
 
         protected void btnLoginOut_OnClick(object sender, EventArgs e)
