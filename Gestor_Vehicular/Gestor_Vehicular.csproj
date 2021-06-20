@@ -115,6 +115,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\Garage.aspx" />
+    <Content Include="Account\Images\avatar_none.png" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -314,7 +315,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Account\Images\temp\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

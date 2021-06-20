@@ -18,6 +18,7 @@
           <Property Name="FUEL" Type="varchar(max)" Nullable="false" />
           <Property Name="COLOR" Type="varchar(max)" Nullable="false" />
           <Property Name="INTERIOR_COLOR" Type="varchar(max)" Nullable="false" />
+          <Property Name="IMG_VEHICLE" Type="varchar(max)" Nullable="false" />
           <Property Name="STATUS" Type="int" Nullable="false" />
           <Property Name="ASSIGNER_DRIVER" Type="int" Nullable="false" />
         </EntityType>
@@ -84,6 +85,7 @@
           <Property Name="INTERIOR_COLOR" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="STATUS" Type="Int32" Nullable="false" />
           <Property Name="ASSIGNER_DRIVER" Type="Int32" Nullable="false" />
+          <Property Name="IMG_VEHICLE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -113,6 +115,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="DatabaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="IMG_VEHICLE" ColumnName="IMG_VEHICLE" />
                 <ScalarProperty Name="ASSIGNER_DRIVER" ColumnName="ASSIGNER_DRIVER" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="INTERIOR_COLOR" ColumnName="INTERIOR_COLOR" />

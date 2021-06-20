@@ -25,5 +25,6 @@ namespace Gestor_Vehicular
         public string INTERIOR_COLOR { get; set; }
         public int STATUS { get; set; }
         public int ASSIGNER_DRIVER { get; set; }
+        public string IMG_VEHICLE { get; set; }
     }
 }
