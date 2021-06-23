@@ -26,5 +26,6 @@ namespace Gestor_Vehicular
         public int STATUS { get; set; }
         public int ASSIGNER_DRIVER { get; set; }
         public string IMG_VEHICLE { get; set; }
+        public int ID_REGISTER_USER { get; set; }
     }
 }

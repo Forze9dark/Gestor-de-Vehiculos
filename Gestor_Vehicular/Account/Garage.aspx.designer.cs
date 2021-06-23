@@ -60,6 +60,42 @@ namespace Gestor_Vehicular.Account
         protected global::System.Web.UI.WebControls.TextBox txtRVDoors;
 
         /// <summary>
+        /// selTransmissionType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selTransmissionType;
+
+        /// <summary>
+        /// selFuel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selFuel;
+
+        /// <summary>
+        /// selColorOutVehicle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox selColorOutVehicle;
+
+        /// <summary>
+        /// selColorInVehicle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox selColorInVehicle;
+
+        /// <summary>
         /// txtRVYear control.
         /// </summary>
         /// <remarks>

@@ -6,6 +6,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using Gestor_Vehicular.Model;
+using Gestor_Vehicular.Utility;
 
 namespace Gestor_Vehicular.Account
 {
@@ -20,17 +22,37 @@ namespace Gestor_Vehicular.Account
             }
         }
 
+        protected static List<Cars> get_cars_by_id(int id)
+        {
+            using (DatabaseEntities db = new DatabaseEntities())
+            {
+                var query = (from p in db.Cars where p.ID_REGISTER_USER == id select p).ToList();
+
+                return query;
+            }
+        }
+
         protected void btnRegisterVehicle_Click(object sender, EventArgs e)
         {
+            // Instance Vehicle Model and Fill With Data
+            Vehicles vh = new Vehicles();
+            vh.BRAND = txtRVBrand.Text;
+            vh.MODEL = txtRVModel.Text;
+            vh.YEAR = txtRVYear.Text;
+            vh.DOORS = txtRVDoors.Text;
+            vh.TRANSMISSION = selTransmissionType.Value;
+            vh.FUEL = selFuel.Value;
+            vh.COLOR = selColorOutVehicle.Text;
+            vh.INTERIOR_COLOR = selColorInVehicle.Text;
+            vh.ID_REGISTER_USER = Convert.ToInt32(HttpContext.Current.Session["ID"]);
+
             if (VRimageUpload.HasFile)
             {
-                string path_save = $"~/Account/Images/temp{VRimageUpload.FileName}";
-                VRimageUpload.PostedFile.SaveAs(Server.MapPath(path_save));
-
-                imgUploadPreview.ImageUrl = $"Images/temp/{VRimageUpload.FileName}";
-
-                return;
+                vh.IMG = VRimageUpload.FileName;
             }
+
+            string[] result = Garage_Controller.register_vehicle(vh);
+
         }
     }
 }

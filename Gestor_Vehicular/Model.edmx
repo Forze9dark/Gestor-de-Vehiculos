@@ -21,6 +21,7 @@
           <Property Name="IMG_VEHICLE" Type="varchar(max)" Nullable="false" />
           <Property Name="STATUS" Type="int" Nullable="false" />
           <Property Name="ASSIGNER_DRIVER" Type="int" Nullable="false" />
+          <Property Name="ID_REGISTER_USER" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -86,6 +87,7 @@
           <Property Name="STATUS" Type="Int32" Nullable="false" />
           <Property Name="ASSIGNER_DRIVER" Type="Int32" Nullable="false" />
           <Property Name="IMG_VEHICLE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ID_REGISTER_USER" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -115,6 +117,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="DatabaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="ID_REGISTER_USER" ColumnName="ID_REGISTER_USER" />
                 <ScalarProperty Name="IMG_VEHICLE" ColumnName="IMG_VEHICLE" />
                 <ScalarProperty Name="ASSIGNER_DRIVER" ColumnName="ASSIGNER_DRIVER" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />

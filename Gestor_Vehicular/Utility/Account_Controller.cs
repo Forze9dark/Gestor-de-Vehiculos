@@ -68,7 +68,7 @@ namespace Gestor_Vehicular.Utility
         {
             using (DatabaseEntities db = new DatabaseEntities())
             {
-                var query = (from c in db.Cars where c.ASSIGNER_DRIVER == id select c).Count();
+                var query = (from c in db.Cars where c.ID_REGISTER_USER == id select c).Count();
                 return query;
             }
         }

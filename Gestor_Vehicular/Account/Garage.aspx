@@ -7,24 +7,28 @@
 
     <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
+
+          <%foreach (var item in get_cars_by_id(Convert.ToInt32(HttpContext.Current.Session["ID"]))) {%>
+
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-              <asp:Image CssClass="bd-placeholder-img card-img-top" width="100%" height="225" ImageUrl="https://images.pexels.com/photos/4141962/pexels-photo-4141962.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" runat="server" />
+            <img src="Images/<%:item.IMG_VEHICLE %>" class="bd-placeholder img card-img-top" style="width: 100%; height: 225px;"/>
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                  <button type="button" class="btn btn-sm btn-outline-success">Set Driver</button>
+                  <button type="button" class="btn btn-sm btn-outline-danger">Remove</button>
                 </div>
-                <small class="text-muted">Asignado</small>
+                <small class="text-muted"><%: (item.STATUS == 0) ? "Available" : "Assigned" %></small>
               </div>
             </div>
           </div>
         </div>
 
+          <% } %>
 
       </div>
     </div>
@@ -34,7 +38,7 @@
 
     <!-- Modal Register New Vehicle -->
     <div class="modal fade" id="modalRegisterVehicle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Register New Vehicle</h5>
@@ -44,12 +48,15 @@
           </div>
           <div class="modal-body">
           
-              <form>
+              <div class="container">
                   <div class="row">
                       <div class="col col-md-6">
-                          <asp:Image ID="imgUploadPreview" ImageUrl="~/Account/Images/avatar_none.png" CssClass="avatar img-circle img-thumbnail"  runat="server" />
-                          <label for="validationTooltip01">Vehicle Photo</label>
+                          <center>
+                              <asp:Image ID="imgUploadPreview" ImageUrl="~/Account/Images/avatar_none.png" CssClass="avatar img-circle img-thumbnail"  runat="server" />
+                          </center>
+                          <br />
                           <asp:FileUpload ID="VRimageUpload" CssClass="form-control" runat="server"/>
+                          <br />
 
                           <label for="validationTooltip01">Brand</label>
                           <div class="input-group mb-2">
@@ -84,10 +91,10 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-car"></i></div>
                         </div>
-                            <select class="custom-select">
+                            <select class="custom-select" id="selTransmissionType" runat="server">
                                 <option value="0" selected>Select transmission type</option>
-                                <option value="1">Automatic</option>
-                                <option value="2">Mecanic</option>
+                                <option value="Automatic">Automatic</option>
+                                <option value="Mecanic">Mecanic</option>
                             </select>
                         </div>
 
@@ -96,11 +103,11 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-car"></i></div>
                             </div>
-                                <select class="custom-select">
+                                <select class="custom-select" id="selFuel" runat="server">
                                   <option value="0" selected>Select fuel type</option>
-                                  <option value="1">Gasoline</option>
-                                  <option value="2">Gas</option>
-                                  <option value="3">Hybrid</option>
+                                  <option value="Gasoline">Gasoline</option>
+                                  <option value="Gas">Gas</option>
+                                  <option value="Hybrid">Hybrid</option>
                                 </select>
                           </div>
 
@@ -109,7 +116,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-car"></i></div>
                             </div>
-                              <asp:TextBox TextMode="Color" CssClass="form-control" runat="server" />
+                              <asp:TextBox TextMode="Color" ID="selColorOutVehicle" CssClass="form-control" runat="server" />
                           </div>
 
 
@@ -118,7 +125,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text"><i class="fas fa-car"></i></div>
                             </div>
-                                <asp:TextBox TextMode="Color" CssClass="form-control" runat="server" />
+                                <asp:TextBox TextMode="Color" ID="selColorInVehicle" CssClass="form-control" runat="server" />
                           </div>
 
                         <label for="validationTooltip01">Year</label>
@@ -130,7 +137,7 @@
                           </div>
                     </div>
                   </div>
-                </form>
+                </div>
 
           </div>
           <div class="modal-footer">
