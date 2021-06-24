@@ -116,6 +116,8 @@
     <Content Include="About.aspx" />
     <Content Include="Account\Garage.aspx" />
     <Content Include="Account\Images\Vehicle\avatar_none.png" />
+    <Content Include="Account\Images\Vehicle\hyundaiSon.jpg" />
+    <Content Include="Account\Images\Vehicle\susukiswitfazul.jpg" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -248,6 +250,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Drivers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

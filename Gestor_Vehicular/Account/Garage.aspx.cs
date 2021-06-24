@@ -49,6 +49,9 @@ namespace Gestor_Vehicular.Account
             if (VRimageUpload.HasFile)
             {
                 vh.IMG = VRimageUpload.FileName;
+                var path = Server.MapPath("Images/Vehicle/");
+                var filename = VRimageUpload.FileName;
+                VRimageUpload.SaveAs(path + filename);
             }
 
             string[] result = Garage_Controller.register_vehicle(vh);

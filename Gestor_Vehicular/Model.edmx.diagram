@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="DatabaseModel.Roles" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="0.5" PointY="2" />
         <EntityTypeShape EntityType="DatabaseModel.Cars" Width="1.5" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="DatabaseModel.Drivers" Width="1.5" PointX="4" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
