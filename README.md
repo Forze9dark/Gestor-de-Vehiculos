@@ -16,10 +16,15 @@ Un Proyecto desarrollado en C# Webforms para facilitar a las personas que tienen
   <li>Login y Registro de usuario ✔️</li>
   <li>Restriccion de Zonas a usuarios sin registrar ✔️</li>
   <li>Registro de Vehiculos en Propiedad ✔️</li>
-  <li>Registro de Conductores ❌</li>
+  <li>Registro de Conductores ✔️</li>
   <li>Asignacion de Vehiculos a conductores con monto estipulado ❌</li>
+  <li>Asignacion de Montos a Pagar x Conductores ❌</li>
   <li>Recordatorio de Pagos ❌</li>
   <li>Registro de Pagos y Historico ❌</li>
+  <li>Asignacion de Pagos x Conductores ❌</li>
+  <li>Recordatorio de documentos faltantes x Conductores ❌</li>
+  <li>Generador de Factura Digitales ❌</li>
+  <li>Contrato Digital con Firma para Ingreso en el sistema a nuevos conductores que alquilen un vehiculo <strong>👁️ (En observacion...) </strong></li>
 </ul>
 
 # Nota Importante
