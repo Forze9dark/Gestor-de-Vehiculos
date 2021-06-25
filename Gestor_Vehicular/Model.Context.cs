@@ -25,9 +25,9 @@ namespace Gestor_Vehicular
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Cars> Cars { get; set; }
         public virtual DbSet<Drivers> Drivers { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

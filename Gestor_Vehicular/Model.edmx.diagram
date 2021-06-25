@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="77a115bee7bf433ea0df53d81d1ea3fe" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseModel.Roles" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="0.5" PointY="2" />
-        <EntityTypeShape EntityType="DatabaseModel.Cars" Width="1.5" PointX="2.25" PointY="0.5" />
-        <EntityTypeShape EntityType="DatabaseModel.Drivers" Width="1.5" PointX="4" PointY="0.5" />
+        <EntityTypeShape EntityType="DatabaseModel.Cars" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Drivers" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Roles" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="2.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

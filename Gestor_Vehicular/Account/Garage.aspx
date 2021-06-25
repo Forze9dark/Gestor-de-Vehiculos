@@ -6,6 +6,19 @@
     <a class="btn btn-primary" data-toggle="modal" data-target="#modalRegisterVehicle"><i class="fas fa-plus"></i>Add new Vehicle</a>
     <a class="btn btn-primary" data-toggle="modal" data-target="#modalRegisterDriver"><i class="fas fa-plus"></i>Add new Driver</a>
 
+    <% if (HttpContext.Current.Session["process"] == "complete")
+        { %>
+
+    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <strong>Successful Registered Driver</strong>
+        You can now assign it to a vehicle..
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+
+    <%} HttpContext.Current.Session.Remove("process"); %>
+
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
@@ -23,19 +36,19 @@
                                 <small class="text-success font-weight-bold">Register No.#<%: item.ID %></small>
                             </div>
 
-                            <h5 class="card-title"><i class="fas fa-car"></i> <%: item.BRAND + ' ' + item.MODEL %></h5>
+                            <h5 class="card-title"><i class="fas fa-car"></i><%: item.BRAND + ' ' + item.MODEL %></h5>
 
                             <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item"><i class="fas fa-gas-pump"></i><strong> FUEL:</strong> <%: item.FUEL %></li>
-                                <li class="list-group-item"><i class="fas fa-car"></i><strong> TRANSMISSION:</strong> <%: item.TRANSMISSION %></li>
-                                <li class="list-group-item"><i class="fas fa-car"></i><strong> YEAR:</strong> <%: item.YEAR %></li>
+                                <li class="list-group-item"><i class="fas fa-gas-pump"></i><strong>FUEL:</strong> <%: item.FUEL %></li>
+                                <li class="list-group-item"><i class="fas fa-car"></i><strong>TRANSMISSION:</strong> <%: item.TRANSMISSION %></li>
+                                <li class="list-group-item"><i class="fas fa-car"></i><strong>YEAR:</strong> <%: item.YEAR %></li>
                             </ul>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-success">Set Driver</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" id="<%: item.ID %>">Remove</button>
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#setDrivertoVehicle" data-whatever="<%: item.ID %>">Set Driver</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" id="btnRemoveCars" runat="server">Remove</button>
                                 </div>
                                 <small class="text-success font-weight-bold"><%: (item.STATUS == 0) ? "Available" : "Assigned" %></small>
                             </div>
@@ -162,14 +175,12 @@
         </div>
     </div>
 
-
-
     <!-- Modal Register New Driver -->
     <div class="modal fade" id="modalRegisterDriver" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -185,15 +196,15 @@
                                 <br />
 
                                 <br />
-                                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+                                <asp:FileUpload ID="fuPhotoDriver" CssClass="form-control" runat="server" />
                                 <br />
-                                
+
                                 <label for="validationTooltip01">Phone</label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-phone-alt"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="Phone" CssClass="form-control" ID="TextBox5" runat="server" />
+                                    <asp:TextBox placeholder="Phone" CssClass="form-control" ID="txtPhone" runat="server" />
                                 </div>
 
                                 <label for="validationTooltip01">Mobile</label>
@@ -201,7 +212,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-mobile-alt"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="Mobile" CssClass="form-control" ID="TextBox6" runat="server" />
+                                    <asp:TextBox placeholder="Mobile" CssClass="form-control" ID="txtMobile" runat="server" />
                                 </div>
                             </div>
 
@@ -212,7 +223,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-user"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="Firstname" CssClass="form-control" ID="TextBox1" runat="server" />
+                                    <asp:TextBox placeholder="Firstname" CssClass="form-control" ID="txtFirstname" runat="server" />
                                 </div>
 
 
@@ -221,7 +232,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-user"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="Lastname" CssClass="form-control" ID="TextBox3" runat="server" />
+                                    <asp:TextBox placeholder="Lastname" CssClass="form-control" ID="txtLastname" runat="server" />
                                 </div>
 
 
@@ -238,21 +249,57 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-id-badge"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="Identification" CssClass="form-control" ID="TextBox2" runat="server" />
+                                    <asp:TextBox placeholder="Identification" CssClass="form-control" ID="txtIdentification" runat="server" />
                                 </div>
 
-                                <label for="validationTooltip01">License</label>
+                                <label for="validationTooltip01">Fuel</label>
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-id-card"></i></div>
+                                        <div class="input-group-text"><i class="fas fa-car"></i></div>
                                     </div>
-                                    <asp:TextBox placeholder="License" CssClass="form-control" ID="TextBox4" runat="server" />
+                                    <select class="custom-select" id="txtLicense" runat="server">
+                                        <option value="00" selected>You have license?</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <asp:Button Text="Register Driver" CssClass="btn btn-success" runat="server" ID="btnRegisterDriver" OnClick="btnRegisterDriver_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Assign Driver to Car -->
+    <div class="modal fade" id="setDrivertoVehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-user"></i><i class="fas fa-arrow-right"></i><i class="fas fa-car"></i>Assign Driver to Vehicle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <label for="validationTooltip01">Select a driver to assign:</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-car"></i></div>
+                            </div>
+                            <asp:DropDownList CssClass="customm-select form-control" ID="DriverDropList" runat="server">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -261,7 +308,5 @@
             </div>
         </div>
     </div>
-
-
 
 </asp:Content>

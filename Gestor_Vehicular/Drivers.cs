@@ -17,10 +17,12 @@ namespace Gestor_Vehicular
         public int ID { get; set; }
         public string FIRSTNAME { get; set; }
         public string LASTNAME { get; set; }
-        public System.DateTime DATE_OF_BIRTH { get; set; }
+        public string DATE_OF_BIRTH { get; set; }
         public string IDENTIFICATION { get; set; }
         public Nullable<int> DRIVERS_LICENSE { get; set; }
         public string PHONE { get; set; }
         public string MOBILE { get; set; }
+        public string IMG { get; set; }
+        public int ID_REGISTER_USER { get; set; }
     }
 }
