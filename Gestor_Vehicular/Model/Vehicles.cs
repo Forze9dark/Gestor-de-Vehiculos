@@ -36,10 +36,14 @@ namespace Gestor_Vehicular.Model
         // Driver id for this car
         public int ASSIGNER_DRIVER { get; set; }
 
-        // Other Feacture
+        // Aditional Feacture
         public bool AIR_CONDITIONING { get; set; }
         public bool RADIO { get; set; }
         public bool USB { get; set; }
+
+        // Specification
+        public float MAX_FUEL { get; set; }
+        public int CURRENT_KM { get; set; }
 
     }
 }

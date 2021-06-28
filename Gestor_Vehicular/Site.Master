@@ -68,7 +68,7 @@
                                     <a runat="server" class="nav-link" href="Account/Garage.aspx">Garage</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a runat="server" class="nav-link" href="#">Drivers</a>
+                                    <a runat="server" class="nav-link" href="Account/Drivers.aspx">Drivers</a>
                                 </li>
                             </LoggedInTemplate>
                         </asp:LoginView>

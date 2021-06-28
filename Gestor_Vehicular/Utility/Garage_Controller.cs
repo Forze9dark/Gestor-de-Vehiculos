@@ -75,7 +75,7 @@ namespace Gestor_Vehicular.Utility
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
-        public static string[] register_driver(Drivers current)
+        public static string[] register_driver(Model.Drivers current)
         {
             try
             {
@@ -89,12 +89,12 @@ namespace Gestor_Vehicular.Utility
                     {
                         FIRSTNAME = current.FIRSTNAME,
                         LASTNAME = current.LASTNAME,
-                        DATE_OF_BIRTH = current.DATE_OF_BIRTH,
+                        DATE_OF_BIRTH = current.BIRTH,
                         IDENTIFICATION = current.IDENTIFICATION,
-                        DRIVERS_LICENSE = current.DRIVERS_LICENSE,
+                        DRIVERS_LICENSE = current.DRIVER_LICENSE,
                         PHONE = current.PHONE,
                         MOBILE = current.MOBILE,
-                        IMG = dr.img,
+                        IMG = dr.IMG,
                         ID_REGISTER_USER = Convert.ToInt32(HttpContext.Current.Session["ID"])
                     });
 
@@ -129,6 +129,35 @@ namespace Gestor_Vehicular.Utility
             dp.DataValueField = "ID";
             dp.DataSource = dr;
             dp.DataBind();
+        }
+
+
+        /// <summary>
+        /// Assign driver to car by id.
+        /// </summary>
+        /// <param name="driver_id"></param>
+        /// <param name="car_id"></param>
+        /// <returns></returns>
+        public static string[] assign_driver_to_car(int driver_id, int car_id)
+        {
+            // Instance of data return
+            string[] data = new string[2];
+
+            using (DatabaseEntities db = new DatabaseEntities())
+            {
+                Cars _car = db.Cars.First(i => i.ID == car_id);
+
+                _car.ASSIGNER_DRIVER = driver_id;
+                _car.STATUS = 1;
+
+                db.SaveChanges();
+
+                data[0] = "success";
+                data[1] = "Assign Complete!";
+
+            }
+
+            return data;
         }
 
     }

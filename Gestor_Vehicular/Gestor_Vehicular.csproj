@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Account\Drivers.aspx" />
     <Content Include="Account\Garage.aspx" />
     <Content Include="Account\Images\Driver\avatar_none.png" />
     <Content Include="Account\Images\Vehicle\avatar_none.png" />
@@ -284,6 +285,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Drivers.aspx.cs">
+      <DependentUpon>Drivers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Drivers.aspx.designer.cs">
+      <DependentUpon>Drivers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Garage.aspx.cs">
       <DependentUpon>Garage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

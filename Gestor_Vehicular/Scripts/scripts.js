@@ -1,11 +1,12 @@
-﻿const { Swal } = require("./sweetalert2/dist/sweetalert2.all");
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
 
 });
 
+$("#btnShowModalSetDriver").on('modal-show', function(){
+    alert('Modal mostrada');
+});
 
-function alert(data) {
-	Swal.alert(data);
-}
+$('#setDrivertoVehicle').is(':visible', function () {
+    alert("hola mundo");
+});
