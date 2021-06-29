@@ -69,6 +69,19 @@ namespace Gestor_Vehicular.Utility
             }
         }
 
+        /// <summary>
+        /// Get all drivers filter by user ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Drivers> get_all_drivers_by_id(int id)
+        {
+            using (DatabaseEntities db = new DatabaseEntities())
+            {
+                var query = (from p in db.Drivers where p.ID_REGISTER_USER == id select p).ToList();
+                return query;
+            }
+        }
 
         /// <summary>
         /// Register new Driver in Database but dont have cars assign
@@ -94,7 +107,7 @@ namespace Gestor_Vehicular.Utility
                         DRIVERS_LICENSE = current.DRIVER_LICENSE,
                         PHONE = current.PHONE,
                         MOBILE = current.MOBILE,
-                        IMG = dr.IMG,
+                        IMG = current.IMG,
                         ID_REGISTER_USER = Convert.ToInt32(HttpContext.Current.Session["ID"])
                     });
 
@@ -123,8 +136,11 @@ namespace Gestor_Vehicular.Utility
         /// </summary>
         /// <param name="dp"></param>
         /// <param name="dr"></param>
-        public static void dropdownlist_fill(DropDownList dp, List<Drivers> dr)
+        public static void dropdownlist_fill(DropDownList dp, int id)
         {
+
+            List<Drivers> dr = get_all_drivers_by_id(id);
+
             dp.DataTextField = "Firstname";
             dp.DataValueField = "ID";
             dp.DataSource = dr;

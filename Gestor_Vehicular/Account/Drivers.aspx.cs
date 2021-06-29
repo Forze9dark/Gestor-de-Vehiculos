@@ -8,7 +8,8 @@ using System.Web.UI.WebControls;
 using System.IO;
 using Gestor_Vehicular.Model;
 using Gestor_Vehicular.Utility;
-
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Gestor_Vehicular.Account
 {
@@ -22,10 +23,13 @@ namespace Gestor_Vehicular.Account
                 Response.Redirect("~/Account/Login.aspx");
             }
 
+            Garage_Controller.dropdownlist_fill(ddDriverList, Convert.ToInt32(HttpContext.Current.Session["ID"]));
+
         }
 
         protected void btnRegisterDriver_Click(object sender, EventArgs e)
         {
+
             using(DatabaseEntities db = new DatabaseEntities())
             {
                 // Instance Driver Model and fill it with data
@@ -49,18 +53,33 @@ namespace Gestor_Vehicular.Account
                 HttpContext.Current.Session["process"] = "complete";
 
                 string[] result = Garage_Controller.register_driver(dr);
+
+                Response.Redirect("Drivers.aspx");
+
             }
         }
 
-        protected static List<Gestor_Vehicular.Drivers> get_drivers_by_id(int id)
+        protected void btnConsultDriver_Click(object sender, EventArgs e)
         {
-            using (DatabaseEntities db = new DatabaseEntities())
-            {
-                var query = (from p in db.Drivers where p.ID_REGISTER_USER == id select p).ToList();
+            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "successalert();", true);
 
-                return query;
-            }
+            get_driver(Convert.ToInt32(ddDriverList.SelectedValue));
         }
 
+        private void get_driver(int idDriver)
+        {
+
+            using(DatabaseEntities db = new DatabaseEntities())
+            {
+                var query = (from p in db.Drivers where p.ID == idDriver select p).First();
+
+                imgDriverGet.ImageUrl = "~/Account/Images/Driver/" + query.IMG;
+                fullNameDriverGet.Text = query.FIRSTNAME + ' ' + query.LASTNAME;
+            
+            }
+
+            panelDataView.Visible = true;
+            panelDataView2.Visible = true;
+        }
     }
 }

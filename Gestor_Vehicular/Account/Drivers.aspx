@@ -1,7 +1,41 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Drivers.aspx.cs" Inherits="Gestor_Vehicular.Account.Drivers" %>
+﻿<%@ Page Title="" Async="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Drivers.aspx.cs" Inherits="Gestor_Vehicular.Account.Drivers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+
+    <script type="text/javascript">
+
+        function successalert() {
+            let timerInterval
+            Swal.fire({
+                title: 'Getting data from driver...',
+                timer: 3500,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getHtmlContainer()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+                        }
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        }
+
+    </script>
 
     <h1 class="display-4"><i class="fas fa-car"></i>Drivers Manager </h1>
     <a class="btn btn-primary" data-toggle="modal" data-target="#modalRegisterDriver"><i class="fas fa-plus"></i>Add new Driver</a>
@@ -11,47 +45,49 @@
         <div class="container">
             <div class="row">
 
-                <%foreach (var item in get_drivers_by_id(Convert.ToInt32(HttpContext.Current.Session["ID"])))
-                    { %>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="Images/Vehicle/<%:item.IMG %>" class="bd-placeholder img card-img-top" style="width: 100%; height: 225px;" />
+                <div class="col col-md-4">
+                    <div class="card">
                         <div class="card-body">
-
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group"></div>
-                                <small class="text-success font-weight-bold">Register No.#<%:item.ID %></small>
-                            </div>
-
-                            <h5 class="card-title"><i class="fas fa-car"></i><%: item.FIRSTNAME + ' ' + item.LASTNAME %></h5>
-
-                            <ul class="list-group list-group-flush mb-3">
-                                <li class="list-group-item"><i class="fas fa-phone-alt"></i><strong> PHONE:</strong> <%: item.PHONE %></li>
-                                <li class="list-group-item"><i class="fas fa-mobile-alt"></i><strong> MOBILE:</strong> <%: item.MOBILE %></li>
-                                <li class="list-group-item"><i class="fas fa-id-card"></i><strong> IDENTIFICATION:</strong> <%: item.IDENTIFICATION %></li>
-                            </ul>
-
-                            <%--<div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                                    <% if (item.STATUS == 0)
-                                        { %>
-                                    <button type="button" id="btnShowModalSetDriver" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#setDrivertoVehicle" data-driverID="<%: item.ID %>">Set Driver</button>
-                                    <%}
-                                        else
-                                        { %>
-                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#setDrivertoVehicle" data-whatever="<%: item.ID %>">Driver Remove</button>
-
-                                    <%} %>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" id="btnRemoveCars" runat="server">Remove</button>
-                                </div>
-                                <small class="text-success font-weight-bold"><%: (item.STATUS == 0) ? "Available" : "Assigned" %></small>
-                            </div>--%>
+                            <label><i class="fas fa-user"></i><strong>Select a Driver:</strong></label>
+                            <asp:DropDownList ID="ddDriverList" CssClass="form-control" runat="server">
+                            </asp:DropDownList>
+                            <asp:Button Text="Consult Driver" ID="btnConsultDriver" OnClick="btnConsultDriver_Click" CssClass="btn btn-outline-primary mt-3" Width="100%" runat="server" />
                         </div>
                     </div>
                 </div>
 
-                <% } %>
+
+                <!-- Panel -->
+                <asp:Panel runat="server" ID="panelDataView" CssClass="col col-md-6" Visible="false">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-5">
+                                <asp:Image ImageUrl="Images/Driver/avatar_none.png" Width="200" Height="250" ID="imgDriverGet" runat="server" />
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <asp:Label Text="{GetFullName}" ID="fullNameDriverGet" runat="server" /></h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
+
+                <!-- Actions -->
+                <asp:Panel ID="panelDataView2" Visible="false" CssClass="col col-md-2" runat="server">
+                    <div style="width: 100%">
+                        <button class="btn btn-success mb-2"><i class="fas fa-money-bill-alt"></i></button>
+                        <br />
+                        <button class="btn btn-success mb-2"><i class="fas fa-wallet"></i></button>
+                        <br />
+                        <button class="btn btn-warning mb-2"><i class="fas fa-edit"></i></button>
+                        <br />
+                        <button class="btn btn-danger mb-2"><i class="fas fa-ban"></i></button>
+                    </div>
+                </asp:Panel>
             </div>
         </div>
     </div>
@@ -73,7 +109,7 @@
                         <div class="row">
                             <div class="col col-md-6">
                                 <center>
-                                    <asp:Image ID="Image1" ImageUrl="~/Account/Images/Vehicle/avatar_none.png" CssClass="avatar img-circle img-thumbnail" runat="server" />
+                                    <asp:Image ID="Image1" ImageUrl="~/Account/Images/Driver/avatar_none.png" CssClass="avatar img-circle img-thumbnail" runat="server" />
                                 </center>
                                 <br />
 

@@ -49,15 +49,6 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                                    <% if (item.STATUS == 0)
-                                        { %>
-                                    <button type="button" id="btnShowModalSetDriver" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#setDrivertoVehicle" data-driverID="<%: item.ID %>">Set Driver</button>
-                                    <%}
-                                        else
-                                        { %>
-                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#setDrivertoVehicle" data-whatever="<%: item.ID %>">Driver Remove</button>
-
-                                    <%} %>
                                     <button type="button" class="btn btn-sm btn-outline-danger" id="btnRemoveCars" runat="server">Remove</button>
                                 </div>
                                 <small class="text-success font-weight-bold"><%: (item.STATUS == 0) ? "Available" : "Assigned" %></small>
